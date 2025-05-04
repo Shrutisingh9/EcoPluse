@@ -34,8 +34,4 @@ EcoPulse is an AI-driven web application that empowers users to track, reduce, a
 - **MongoDB** via Mongoose (or pymongo)
 - **JWT Authentication** for secure login sessions
 
-### 📦 Other Tools
-- **Node.js** (For auxiliary services)
-- **Git + GitHub** for version control
-
 ---
