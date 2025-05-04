@@ -1,0 +1,232 @@
+:root {
+    --primary: #00C98D;
+    --secondary: #2C3E50;
+    --light-bg: #F5F7FA;
+    --card-bg: #FFFFFF;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  body {
+    background-color: var(--light-bg);
+    color: var(--secondary);
+    padding: 20px;
+  }
+
+  .navbar {
+    width: 100%;
+    background: var(--card-bg);
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+
+  .navbar-left .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .navbar-right {
+    display: flex;
+    gap: 25px;
+  }
+
+  .navbar-right a {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--secondary);
+    transition: color 0.3s ease;
+  }
+
+  .navbar-right a:hover {
+    color: var(--primary);
+  }
+
+  .dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  .welcome-text {
+    grid-column: span 12;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .chart-card {
+    grid-column: span 8;
+    height: 300px;
+  }
+
+  .calculate-card {
+    grid-column: span 2;
+    height: 300px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .calculate-card h2 {
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+  }
+
+  .calculate-card button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .calculate-card button:hover {
+    background-color: #00b47d;
+  }
+
+  .goal-card {
+    grid-column: span 2;
+    height: 300px;
+    text-align: center;
+  }
+
+  .goal-percent {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin: 10px 0;
+  }
+
+  .goal-progress {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 60%;
+    background: var(--primary);
+    border-radius: 5px;
+  }
+
+  .activities-card,
+  .challenges-card {
+    grid-column: span 4;
+    max-height: 400px;
+  }
+
+  .scroll-content {
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-top: 10px;
+    max-height: 330px;
+  }
+
+  .leaderboard-card {
+    grid-column: span 4;
+    height: 200px;
+    text-align: center;
+  }
+
+  .leaderboard-rank {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .challenge-item {
+    background: rgba(0, 201, 141, 0.1);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+
+  .challenge-title {
+    font-weight: 500;
+    color: var(--primary);
+  }
+
+  .challenge-reward {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 5px;
+  }
+
+  .activity-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .activity-checkbox {
+    margin-right: 12px;
+    accent-color: var(--primary);
+  }
+
+  .activity-details {
+    flex-grow: 1;
+  }
+
+  .activity-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+
+  .activity-sub {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  @media (max-width: 768px) {
+    .dashboard {
+      grid-template-columns: 1fr;
+    }
+
+    .chart-card,
+    .calculate-card,
+    .goal-card,
+    .activities-card,
+    .leaderboard-card,
+    .challenges-card {
+      grid-column: span 1;
+    }
+
+    .calculate-card {
+      align-items: center;
+      justify-content: center;
+    }
+  }

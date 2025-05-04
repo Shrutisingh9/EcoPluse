@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>CO₂ Emission Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e9f5e9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1300px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 40px 50px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .back-arrow {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
+      color: #4CAF50;
+      font-weight: bold;
+      padding-left: 10px;
+    }
+
+    .back-arrow span {
+      margin-left: 8px;
+    }
+
+    h1 {
+      margin-bottom: 5px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    p.subtitle {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: #4CAF50;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 15px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
+
+    .row > div {
+      flex: 1 1 48%; /* Adjusted to make inputs side by side */
+      min-width: 240px; /* Prevents shrinking too much */
+    }
+
+    button {
+      margin-top: 40px;
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .row > div {
+        flex: 1 1 100%; /* Stacks columns on smaller screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="back-arrow" onclick="goBack()">⬅ <span>Back</span></div>
+
+    <h1>CO₂ Emission Calculator</h1>
+    <p class="subtitle">Enter your details below to calculate your carbon emission.</p>
+
+    <!-- Transport -->
+    <h2>Transport</h2>
+    <div class="row">
+      <div>
+        <label for="vehicleType">Vehicle Type</label>
+        <select id="vehicleType">
+          <option value="">Select</option>
+          <option>Car</option>
+          <option>Motorcycle</option>
+          <option>Scooter</option>
+          <option>Electric Vehicle</option>
+        </select>
+      </div>
+      <div>
+        <label for="fuelType">Fuel Type</label>
+        <select id="fuelType">
+          <option value="">Select</option>
+          <option>Petrol</option>
+          <option>Diesel</option>
+          <option>Electric</option>
+        </select>
+      </div>
+      <div>
+        <label for="kmPerWeek">Average KM Driven per Week</label>
+        <input type="number" id="kmPerWeek" placeholder="e.g., 100">
+      </div>
+      <div>
+        <label for="fuelConsumption">Fuel Consumption (L/week)</label>
+        <input type="number" id="fuelConsumption" placeholder="e.g., 10">
+      </div>
+      <div>
+        <label for="publicTransport">Do you use Public Transport?</label>
+        <select id="publicTransport">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Occasionally</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Energy Use -->
+    <h2>Energy Use</h2>
+    <div class="row">
+      <div>
+        <label for="electricity">Monthly Electricity Consumption (kWh)</label>
+        <input type="number" id="electricity" placeholder="e.g., 350">
+      </div>
+      <div>
+        <label for="gasType">Gas Type</label>
+        <select id="gasType">
+          <option value="">Select</option>
+          <option>LPG</option>
+          <option>Natural Gas</option>
+          <option>None</option>
+        </select>
+      </div>
+      <div>
+        <label for="gasUsage">Monthly Gas Usage (Litres or m³)</label>
+        <input type="number" id="gasUsage" placeholder="e.g., 25">
+      </div>
+    </div>
+
+    <!-- Diet & Food -->
+    <h2>Diet & Food Habits</h2>
+    <div class="row">
+      <div>
+        <label for="dietType">Type of Diet</label>
+        <select id="dietType">
+          <option value="">Select</option>
+          <option>Vegetarian</option>
+          <option>Non-Vegetarian</option>
+          <option>Vegan</option>
+        </select>
+      </div>
+      <div>
+        <label for="mealsPerDay">Meals Per Day</label>
+        <input type="number" id="mealsPerDay" placeholder="e.g., 3">
+      </div>
+    </div>
+
+    <!-- Water Usage -->
+    <h2>Water Usage</h2>
+    <div class="row">
+      <div>
+        <label for="waterUsage">Average Water Usage per Day (Litres)</label>
+        <input type="number" id="waterUsage" placeholder="e.g., 150">
+      </div>
+    </div>
+
+    <!-- Household -->
+    <h2>Household</h2>
+    <div class="row">
+      <div>
+        <label for="numPeople">Number of People in Household</label>
+        <input type="number" id="numPeople" placeholder="e.g., 4">
+      </div>
+      <div>
+        <label for="acUsage">AC Usage (Hours/day)</label>
+        <input type="number" id="acUsage" placeholder="e.g., 6">
+      </div>
+      <div>
+        <label for="heaterUsage">Heater Usage (Hours/day)</label>
+        <input type="number" id="heaterUsage" placeholder="e.g., 2">
+      </div>
+      <div>
+        <label for="washingFrequency">Washing Machine/Dryer Frequency (per week)</label>
+        <input type="number" id="washingFrequency" placeholder="e.g., 3">
+      </div>
+    </div>
+
+    <!-- Online Orders -->
+    <h2>Online Orders</h2>
+    <div class="row">
+      <div>
+        <label for="onlineOrders">Online Orders per Month</label>
+        <input type="number" id="onlineOrders" placeholder="e.g., 5">
+      </div>
+      <div>
+        <label for="fastDelivery">Do you prefer fast delivery?</label>
+        <select id="fastDelivery">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Sometimes</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Miscellaneous -->
+    <h2>Miscellaneous</h2>
+    <div class="row">
+      <div>
+        <label for="treesAtHome">Do you have trees or plants at home?</label>
+        <select id="treesAtHome">
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+      </div>
+    </div>
+
+    <button onclick="calculateCO2()">Calculate Emission</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+
+    function calculateCO2() {
+      const km = parseFloat(document.getElementById("kmPerWeek").value) || 0;
+      const electricity = parseFloat(document.getElementById("electricity").value) || 0;
+      const gas = parseFloat(document.getElementById("gasUsage").value) || 0;
+      const water = parseFloat(document.getElementById("waterUsage").value) || 0;
+      const ac = parseFloat(document.getElementById("acUsage").value) || 0;
+      const heater = parseFloat(document.getElementById("heaterUsage").value) || 0;
+      const wash = parseFloat(document.getElementById("washingFrequency").value) || 0;
+
+      const co2Emission = (km * 0.2) + (electricity * 0.9) + (gas * 2.5) + (water * 0.02) + (ac * 0.5) + (heater * 0.4) + (wash * 0.1);
+
+      document.getElementById("result").innerText = `Your CO₂ emission is: ${co2Emission.toFixed(2)} kg CO₂`;
+    }
+  </script>
+
+</body>
+</html>

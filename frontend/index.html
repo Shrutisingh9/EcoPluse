@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoPulse Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <div class="logo">EcoPulse</div>
+    </div>
+    <div class="navbar-right">
+      <i class="fa-solid fa-house"><a href="home.html"> Home</a></i>
+      <i class="fa-solid fa-right-to-bracket"><a href="login-register.html"> Login/Register</a></i>
+      <i class="fa-solid fa-user"><a href="profile.html"> Profile</a></i>
+    </div>
+  </nav>
+
+  <!-- Dashboard Grid -->
+  <div class="dashboard">
+    <div class="welcome-text">Welcome back, Shruti Singh</div>
+
+    <!-- Monthly CO2 Emission Chart -->
+    <div class="card chart-card">
+      <h2>Monthly CO₂ Emissions</h2>
+      <canvas id="emissionsChart"></canvas>
+    </div>
+
+    <!-- Calculate Emission -->
+    <div class="card calculate-card">
+      <h2>Calculate Your CO₂ Emission</h2>
+      <button onclick="location.href='calculate.html'">Get Started</button>
+    </div>
+
+    <!-- Goal -->
+    <div class="card goal-card">
+      <h2>Carbon Reduction Goal</h2>
+      <div class="goal-percent">60%</div>
+      <div class="goal-progress">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+
+    <!-- Challenges -->
+    <div class="card challenges-card">
+      <h2>Active Eco-Challenges</h2>
+      <div class="scroll-content">
+        <div class="challenge-item">
+          <div class="challenge-title">Plant a tree</div>
+          <div class="challenge-reward">Earn 50 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Zero Waste Day</div>
+          <div class="challenge-reward">Earn 30 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Use Public Transport</div>
+          <div class="challenge-reward">Earn 20 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Recycle 100kg of Plastic</div>
+          <div class="challenge-reward">Earn 40 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Install Solar Panels</div>
+          <div class="challenge-reward">Earn 80 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Compost Food Waste for a Week</div>
+          <div class="challenge-reward">Earn 35 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Switch to Energy-Efficient Lightbulbs</div>
+          <div class="challenge-reward">Earn 25 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Organize a Community Clean-Up</div>
+          <div class="challenge-reward">Earn 50 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Go Meat-Free for a Week</div>
+          <div class="challenge-reward">Earn 40 points</div>
+        </div>
+        <div class="challenge-item">
+          <div class="challenge-title">Plant a Vegetable Garden</div>
+          <div class="challenge-reward">Earn 60 points</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="card activities-card">
+      <h2>Recent Eco-Friendly Activities</h2>
+      <div class="scroll-content">
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Biked to reduce emissions</div>
+            <div class="activity-sub">2 hours cycling</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox" checked>
+          <div class="activity-details">
+            <div class="activity-title">Recycled materials</div>
+            <div class="activity-sub">Glass, plastic, and paper</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox" checked>
+          <div class="activity-details">
+            <div class="activity-title">Completed a challenge</div>
+            <div class="activity-sub">Nature cleanup</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox" checked>
+          <div class="activity-details">
+            <div class="activity-title">Used reusable bag</div>
+            <div class="activity-sub">Avoided plastic bags</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Took public transport</div>
+            <div class="activity-sub">Saved fuel</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Planted Trees</div>
+            <div class="activity-sub">Contributed to reforestation</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Composted Food Waste</div>
+            <div class="activity-sub">Reduced landfill waste</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox" checked>
+          <div class="activity-details">
+            <div class="activity-title">Installed Solar Panels</div>
+            <div class="activity-sub">Reduced energy consumption</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Switched to Energy-Efficient Lightbulbs</div>
+            <div class="activity-sub">Reduced energy usage</div>
+          </div>
+        </div>
+        <div class="activity-item">
+          <input type="checkbox" class="activity-checkbox">
+          <div class="activity-details">
+            <div class="activity-title">Took part in a Beach Cleanup</div>
+            <div class="activity-sub">Contributed to marine conservation</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .hero {
+    background-image: url('img/CO.png'); /* Adjust path as needed */
+    background-size: 90% auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-color: #000;
+    height: 100vh;
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  
+  /* 🔼 Site title - Move it higher */
+  .site-name {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  }
+  
+  /* 🔽 Get Started button - Move it further down */
+  .content {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .get-started {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2e7d32;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  .get-started a{
+    text-decoration: none;
+  }
+  
+  .get-started:hover {
+    background-color: #c8e6c9;
+  }
+  
+  /* ↖️ Move intro text to bottom-left */
+  .intro-text {
+    position: absolute;
+    bottom: 40px;
+    left: 100px;
+    max-width: 400px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: 89AC46;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    line-height: 1.4;
+  }
+  
+  

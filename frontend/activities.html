@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8" /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+        <title>EcoPulse | Activities</title> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet"/> 
+        <link href="stylesheet" href="activities.css">
+    
+    </head> 
+    <body> 
+        <div class="sidebar">
+            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+            <a href="activities.html"><i class="fas fa-leaf"></i> Activities</a>
+            <a href="home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+
+        <div class="activities-container"> 
+            <a href="javascript:history.back()" class="back-btn">&larr;</a> 
+            <h2>Activities</h2>
+
+            <!-- Activities List -->
+            <div class="activity-item">
+                <span>Plant a tree in your neighborhood (50 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 50)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Ride a bicycle instead of car today (30 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 30)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use a reusable water bottle (20 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 20)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Turn off lights when not in use (10 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 10)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Say no to plastic bags (15 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 15)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use public transport today (25 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 25)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Take a shorter shower (10 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 10)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Buy local, eco-friendly products (20 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 20)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Reduce meat consumption for one week (40 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 40)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Install energy-saving light bulbs (30 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 30)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use a clothesline instead of a dryer (15 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 15)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Switch off appliances when not in use (10 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 10)">Complete</button>
+            </div>
+            <!-- Adding More Activities -->
+            <div class="activity-item">
+                <span>Switch to energy-efficient appliances (35 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 35)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Compost organic waste (50 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 50)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Support sustainable fashion brands (25 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 25)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Unsubscribe from paper catalogs (5 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 5)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use rechargeable batteries (15 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 15)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Grow your own vegetables (60 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 60)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Start using cloth napkins (10 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 10)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Install a rainwater harvesting system (100 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 100)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Volunteer for a beach cleanup (40 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 40)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Conserve water by fixing leaks (25 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 25)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Buy second-hand instead of new (30 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 30)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use eco-friendly cleaning products (20 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 20)">Complete</button>
+            </div>
+            <!-- More Activities -->
+            <div class="activity-item">
+                <span>Join a local environmental group (40 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 40)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Plant a tree in a public space (50 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 50)">Complete</button>
+            </div>
+            <div class="activity-item">
+                <span>Use public transport for a week (35 points)</span>
+                <button class="complete-btn" onclick="completeActivity(this, 35)">Complete</button>
+            </div>
+            <!-- Add more activities as needed -->
+            <!-- Total should be around 70-80 activities, each with different point values -->
+
+        </div>
+
+        <script src="activities.js"></script>
+
+        <script>
+          // Function to complete an activity
+          function completeActivity(button, points, id) {
+              // Save the completed state in localStorage
+              localStorage.setItem(`activity_${id}`, true);
+  
+              // Change button color to green and disable it
+              button.classList.add('completed');
+              button.innerText = `Completed (${points} points)`;
+              button.disabled = true;
+  
+              // Optionally, you can implement point tracking here, like updating a user's score.
+              alert(`You earned ${points} points for completing this activity!`);
+          }
+  
+          // Load completed activities from localStorage on page load
+          window.onload = function() {
+              const activities = document.querySelectorAll('.activity-item');
+  
+              activities.forEach(activity => {
+                  const id = activity.getAttribute('data-id');
+                  const button = activity.querySelector('.complete-btn');
+  
+                  // Check if activity has been completed before
+                  if (localStorage.getItem(`activity_${id}`)) {
+                      // Mark activity as completed
+                      button.classList.add('completed');
+                      button.innerText = `Completed`;
+                      button.disabled = true;
+                  }
+              });
+          }
+      </script>
+
+    </body> 
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EcoPulse | My Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f0fdf6;
+      color: #2C3E50;
+    }
+    .sidebar {
+      width: 200px;
+      background-color: #00C98D;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 8px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    .sidebar a:hover {
+      background-color: #00b383;
+    }
+    .profile-container {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .back-btn {
+      margin-bottom: 20px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #00C98D;
+      display: inline-block;
+      text-decoration: none;
+      user-select: none;
+    }
+    .back-btn:hover {
+      color: #00b383;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .profile-header .avatar-container {
+      position: relative;
+    }
+    .profile-header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #00C98D;
+    }
+    .camera-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: #00C98D;
+      color: white;
+      padding: 6px;
+      border-radius: 50%;
+      font-size: 16px;
+      cursor: pointer;
+      border: 3px solid white;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .camera-icon:hover {
+      background-color: #00b383;
+    }
+    .profile-header .info h2 {
+      margin-bottom: 4px;
+    }
+    .edit-btn {
+      background: #00C98D;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .edit-btn:hover {
+      background: #00b383;
+    }
+    form .form-group {
+      margin-bottom: 12px;
+    }
+    form .form-group label {
+      font-weight: 600;
+      margin-bottom: 4px;
+      display: block;
+      font-size: 13px;
+    }
+    form .form-group input,
+    form .form-group select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+    .form-section-title {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #00C98D;
+      margin-bottom: 10px;
+    }
+    #uploadRemoveDialog {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      z-index: 1000;
+      text-align: center;
+    }
+    #uploadRemoveDialog button {
+      margin: 5px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      background-color: #00C98D;
+      color: white;
+      cursor: pointer;
+    }
+    #uploadRemoveDialog button:hover {
+      background-color: #00b383;
+    }
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        justify-content: space-around;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+    <a href="activities.html"><i class="fas fa-running"></i> Activities</a>
+    <a href="home.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <div class="profile-container">
+    <span class="back-btn" onclick="history.back()" title="Go Back">&#8592;</span>
+
+    <div class="profile-header">
+      <div class="avatar-container">
+        <img id="profileImg" src="img/default_avatar.png" alt="Profile Picture">
+        <i class="fas fa-camera camera-icon" onclick="showUploadRemoveDialog()"></i>
+      </div>
+      <div class="info">
+        <h2>My Profile</h2>
+        <div id="emailDisplay">@example.com</div>
+        <button class="edit-btn" onclick="toggleEdit(event)">Edit Profile</button>
+      </div>
+    </div>
+
+    <form id="profileForm">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" id="name" disabled required/>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" disabled required/>
+      </div>
+
+      <div class="form-group">
+        <label>Phone</label>
+        <input type="tel" id="phone" disabled required/>
+      </div>
+
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="dob" disabled required/>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <select id="gender" disabled onchange="updateAvatar()" required>
+          <option value="">Select</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-section-title">Personal Details</div>
+
+      <div class="form-group">
+        <label>Weight (kg)</label>
+        <input type="number" id="weight" disabled required/>
+      </div>
+
+      <div class="form-group">
+        <label>Height (cm)</label>
+        <input type="number" id="height" disabled required/>
+      </div>
+    </form>
+  </div>
+
+  <!-- Avatar Upload/Remove Dialog -->
+  <div id="uploadRemoveDialog">
+    <p>Would you like to upload a new picture or remove your current one?</p>
+    <button onclick="uploadProfilePicture()">Upload</button>
+    <button onclick="removeProfilePicture()">Remove</button>
+    <button onclick="closeDialog()">Cancel</button>
+  </div>
+
+  <script>
+    // Sample user data stored after login/register
+    const user = JSON.parse(localStorage.getItem('user')) || {
+      name: "",
+      email: "",
+      phone: "",
+      gender: "",
+      weight: "",
+      height: "",
+      dob: "",
+      avatar: "img/default_avatar.png"
+    };
+
+    // Populate fields with user data
+    window.onload = () => {
+      document.getElementById('name').value = user.name || '';
+      document.getElementById('email').value = user.email || '';
+      document.getElementById('phone').value = user.phone || '';
+      document.getElementById('dob').value = user.dob || '';
+      document.getElementById('gender').value = user.gender || '';
+      document.getElementById('weight').value = user.weight || '';
+      document.getElementById('height').value = user.height || '';
+      document.getElementById('emailDisplay').innerText = user.email;
+      document.getElementById('profileImg').src = user.avatar;
+    };
+
+    // Toggle Edit/Save Mode
+    function toggleEdit(e) {
+      e.preventDefault();
+      const inputs = document.querySelectorAll('#profileForm input, #profileForm select');
+      const btn = e.target;
+      const isDisabled = inputs[0].disabled;
+
+      inputs.forEach(input => input.disabled = !isDisabled);
+      btn.textContent = isDisabled ? 'Save Changes' : 'Edit Profile';
+
+      if (!isDisabled) {
+        // Save updated values to localStorage
+        const updatedUser = {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          dob: document.getElementById('dob').value,
+          gender: document.getElementById('gender').value,
+          weight: document.getElementById('weight').value,
+          height: document.getElementById('height').value,
+          avatar: document.getElementById('profileImg').src
+        };
+
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+      }
+    }
+
+    // Update Avatar based on Gender
+    function updateAvatar() {
+      const gender = document.getElementById('gender').value;
+      const avatar = document.getElementById('profileImg');
+      if (gender === 'Male') {
+        avatar.src = 'img/male_avatar.webp';
+      } else if (gender === 'Female') {
+        avatar.src = 'img/female-avatar.avif';
+      } else {
+        avatar.src = 'img/default_avatar.svg';
+      }
+    }
+
+    // Avatar update functions
+    function showUploadRemoveDialog() {
+      document.getElementById('uploadRemoveDialog').style.display = 'block';
+    }
+
+    function closeDialog() {
+      document.getElementById('uploadRemoveDialog').style.display = 'none';
+    }
+
+    // Upload Avatar
+    function uploadProfilePicture() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.onchange = e => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function () {
+            const avatar = document.getElementById('profileImg');
+            avatar.src = reader.result;
+            user.avatar = reader.result; // Update user data
+            localStorage.setItem('user', JSON.stringify(user));
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      input.click();
+      closeDialog();
+    }
+
+    // Remove Avatar
+    function removeProfilePicture() {
+      const avatar = document.getElementById('profileImg');
+      avatar.src = 'img/default_avatar.svg';
+      user.avatar = 'img/default_avatar.svg'; // Reset to default
+      localStorage.setItem('user', JSON.stringify(user));
+      closeDialog();
+    }
+  </script>
+</body>
+</html>
